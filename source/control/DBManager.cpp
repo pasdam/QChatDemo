@@ -4,11 +4,12 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlResult>
+#include <QStandardPaths>
 
 #include "ApplicationManager.h"
 #include "UserManager.h"
 
-#define DB_PATH     "db.sqlite"
+#define DB_PATH QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "db.sqlite"
 
 DBManager::DBManager(QObject *parent) : QObject(parent)
 {}
