@@ -45,6 +45,10 @@ void MessageManager::loadMore()
     // simulate a network call, and its delay
     mMessageModel.setLoading(true);
     QTimer::singleShot(3000, [=](){
-        loadMessages(mContactId, mMessageModel.first()->timestamp());
+        if (mMessageModel.rowCount() > 0) {
+            loadMessages(mContactId, mMessageModel.first()->timestamp());
+        } else {
+            mMessageModel.setLoading(false);
+        }
     });
 }
